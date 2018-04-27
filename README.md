@@ -4,7 +4,7 @@
 https://hanjins.github.io/studyWawa/example1.html
 
 ## javascript - step2
-<https://hanjins.github.io/studyWawa/example2.html>
+https://hanjins.github.io/studyWawa/example2.html
 
 ## javascript - step3
-<https://hanjins.github.io/studyWawa/example3.html>
+https://hanjins.github.io/studyWawa/example3.html
