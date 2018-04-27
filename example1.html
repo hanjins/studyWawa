@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimzum-scale=1.0, width=device-width">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>javascript 교육</title>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -24,6 +24,12 @@
         .inner .text-area:first-letter { font-size: 30px; line-height: 1.2; vertical-align: bottom; }
         .inner .text-area.edit { color: #bbb; }
         .inner button.btn { padding: 5px 20px; color: yellow; background: none; border: 1px solid yellow; cursor: pointer; }
+        @media screen and (max-width: 1000px) {
+            .edu-wrap { width: 100%; padding: 0 15px; box-sizing: border-box; }
+            .edu-wrap .edu-desc dd { padding-left: 10px; text-indent: -4px; line-height: 1.4; }
+            .edu-wrap .edu-desc dd:before { margin-right: 3px; }
+            .inner { width:100%; margin-left: 0; margin-bottom: 15px; }
+        }
     </style>
 </head>
 <body>
@@ -87,7 +93,11 @@
     // 글자 수정 시
     $('.text-area').keyup(function(e) {
         $('.inner').innerHeight('auto');
-        sameHeightFn();
+        if($(window).width() <= 1000) {
+            $('.inner').innerHeight('auto');
+        } else {
+            sameHeightFn();
+        }
     });
     
     // 높이 값 조절 함수
@@ -99,7 +109,14 @@
             return Math.max.apply(null, hArray)
         });
     }
-    sameHeightFn();
+
+    $(window).on('load resize', function() {
+        if($(window).width() <= 1000) {
+            $('.inner').innerHeight('auto');
+        } else {
+            sameHeightFn();
+        }
+    });
 
 </script>
 </body>
