@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javascript 교육</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <style>
+        body { margin: 0; }
+        br { line-height: 2.5; }
+        .edu-wrap { width: 1000px; margin:0 auto 50px; }
+        .edu-wrap h1 { margin: 20px 0 0; text-transform: uppercase; }
+        .edu-wrap .edu-desc { padding: 15px 20px; background-color: #5a5a5a; border-radius: 3px; }
+        .edu-wrap .edu-desc dt { margin-bottom: 5px; color: #fff; font-weight: bold; }
+        .edu-wrap .edu-desc dd { margin: 0; padding-left: 10px; color: #fff; }
+        .edu-wrap .edu-desc dd:before { content: 'º'; display: inline-block; margin-right: 10px; font-size: 10px; }
+        .outer { margin-top: 20px; box-sizing: border-box; }
+        .outer:after { content: ''; display: block; clear: both; overflow: hidden; }
+        .inner { float: left; width:32%; min-height: 100px; margin-left: 2%; padding: 15px; color: #fff; background-color: #607d8b; border-radius: 3px; box-sizing: border-box; }
+        .inner:before { content: ''; display: block; border-top: 8px dashed #fff; opacity: .2 }
+        .inner:first-child { margin-left: 0; }
+        .inner .text-area { font-size: 15px; line-height: 1.5; }
+        .inner .text-area:first-letter { font-size: 30px; line-height: 1.2; vertical-align: bottom; }
+        .inner .text-area.edit { color: #bbb; }
+        .inner button.btn { padding: 5px 20px; color: yellow; background: none; border: 1px solid yellow; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="edu-wrap">
+        <h1>javascript - step1</h1>
+        <dl class="edu-desc">
+            <dt>텍스트 수정, 저장 기능 구현</dt>
+            <dd>수정 버튼 클릭 시 필드의 텍스트를 수정 가능하게 한다.</dd>
+            <dd>수정 버튼 클릭 시 버튼 텍스트를 '저장'으로 변경한다.</dd>
+            <dd>저장 버튼 클릭 시 필드 수정 안되게, 버튼 텍스트는 '수정'으로 변경한다.</dd>
+        </dl>
+        <dl class="edu-desc">
+            <dt>필드 높이값 조정</dt>
+            <dd>페이지 로드 시 각 필드 높이값 큰 것에 맞추기</dd>
+            <dd>필드의 텍스트 수정할 경우(keyup) 각 필드의 높이를 가장 높이값이 큰 것에 맞추기</dd>
+        </dl>
+        <div class="outer">
+            <div class="inner">
+                <p class="text-area">
+                    유전자에 따라 효과적으로 살을 뺄 수 있다는 연구결과가 발표됐다.<br>김진호 삼성서울병원 삼서유전자연구소 박사 연구팀은 ‘한국인유전체역학조사사업(KoGES)에 참여한 8,840명을 대상으로 비만 관련 유전자 변이정도, 식이습관, 운동에 따른 체중 감소 등을 분석한 결과, 다이어트에 영향을 미치는 유전자 돌연변이를 조합하면 체중감량에 도움을 얻을 수 있다고 23일 밝혔다.<br>이번 연구는 국제 학술지 ’뉴트리언츠(Nutrients)‘ 최근호에 실렸다.
+                </p>
+                <button type="button" class="btn">수정</button>
+            </div>
+            <div class="inner">
+                <p class="text-area">
+                    연구팀에 따르면 다이어트에 영향을 미치는 유전자 돌연변이는 ▦탄수화물 관련 37개 ▦지방 관련 19개 ▦총 칼로리 관련 44개 ▦운동 반응 관련 25개 등 총 100개로, 이들 유전자 변이의 조합에 따라 다이어트 효율이 차이가 났다. 
+                    연구팀은 ▦저탄수화물 식이형 ▦저지방 식이형 ▦저칼로리 식이형 ▦운동형으로 유형을 구분, 각 유형상태를 ▦매우 높음 ▦높음 ▦낮음 ▦매우 낮음 등으로 분석했다.<br>탄수화물을 적게 먹어야 하는 사람, 지방 섭취량을 줄어야 하는 사람, 음식종류에 관계없이 총 칼로리를 줄여야 하는 사람, 운동을 꾸준히 해야 하는 사람 등 다이어트에 필요한 유전자 조합에 맞춰 다이어트를 해야 한다는 것이다.
+                </p>
+                <button type="button" class="btn">수정</button>
+            </div>
+            <div class="inner">
+                <p class="text-area">
+                    분석결과, 저탄수화물 식이유형에 운동반응이 낮은 사람은 아무리 헬스를 열심 해도 탄수화물 위주의 식단을 유지하면 체중감량에 성공할 수 없었다.
+                </p>
+                <button type="button" class="btn">수정</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    // 전역 변수 선언, 수정, 저장 상태 체크용
+    var flag = 0;
+
+    // 수정 버튼 클릭 시
+    $('.btn').click(function() {
+        var $t = $(this);
+        var $target = $t.parent().find('.text-area');
+        
+        if(flag == 0) {
+            $target.addClass('edit').attr('contentEditable','true');
+            $t.text('저장');
+            flag = 1;
+        } else {
+            $target.removeClass('edit').attr('contentEditable','false');
+            $t.text('수정');
+            flag = 0;
+        }
+    });
+
+    // 글자 수정 시
+    $('.text-area').keyup(function(e) {
+        $('.inner').innerHeight('auto');
+        sameHeightFn();
+    });
+    
+    // 높이 값 조절 함수
+    function sameHeightFn(){
+        var hArray = [];
+        $('.inner').each(function() {
+            hArray.push($(this).innerHeight());
+        }).innerHeight(function() {
+            return Math.max.apply(null, hArray)
+        });
+    }
+    sameHeightFn();
+
+</script>
+</body>
+</html>
