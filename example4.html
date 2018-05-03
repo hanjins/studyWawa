@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javascript 교육 - plugin</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <style>
+        .layer1 { display: none; width: 400px; height: 300px; border: 1px solid #000; background-color: gray; box-sizing: border-box; }
+        .layer2 { display: none; width: 500px; height: 150px; border: 1px solid #000; background-color: pink; box-sizing: border-box; }
+        .on { border: 5px dashed #000; }
+    </style>
+</head>
+<body>
+    <button type="button" class="btn1">레이어1 중앙에 띄우기</button>
+    <button type="button" class="btn2">레이어2 중앙에 띄우기</button>
+    <div class="layer1"></div>
+    <div class="layer2"></div>
+
+    <script>    
+        (function($){
+           $('.btn1').click(function(){
+               var w = $('.layer1').innerWidth()/2;
+               var h = $('.layer1').innerHeight()/2;
+               $('.layer1').css({
+                   'display': 'block',
+                   'position': 'absolute',
+                   'left': '50%',
+                   'top': '50%',
+                   'margin-left': -w,
+                   'margin-top': -h
+               }).addClass('on');
+           });
+           $('.btn2').click(function(){
+               var w = $('.layer2').innerWidth()/2;
+               var h = $('.layer2').innerHeight()/2;
+               $('.layer2').css({
+                   'display': 'block',
+                   'position': 'absolute',
+                   'left': '50%',
+                   'top': '50%',
+                   'margin-left': -w,
+                   'margin-top': -h
+               }).addClass('on');
+           });
+        })(jQuery);
+    </script>
+</body>
+</html>
