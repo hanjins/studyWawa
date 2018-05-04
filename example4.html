@@ -10,41 +10,77 @@
         .layer1 { display: none; width: 400px; height: 300px; border: 1px solid #000; background-color: gray; box-sizing: border-box; }
         .layer2 { display: none; width: 500px; height: 150px; border: 1px solid #000; background-color: pink; box-sizing: border-box; }
         .on { border: 5px dashed #000; }
+        li { padding-top: 20px; }
     </style>
 </head>
 <body>
-    <button type="button" class="btn1">레이어1 중앙에 띄우기</button>
-    <button type="button" class="btn2">레이어2 중앙에 띄우기</button>
+    <h1>Layer Popup</h1>
+    <p>
+        버튼 클릭 시 레이어 팝업을 화면 중앙에 띄운다.<br>
+        메소드 체인 가능하게 한다.<br>
+        example().addClass()
+    </p>
     <div class="layer1"></div>
     <div class="layer2"></div>
 
-    <script>    
-        (function($){
-           $('.btn1').click(function(){
-               var w = $('.layer1').innerWidth()/2;
-               var h = $('.layer1').innerHeight()/2;
-               $('.layer1').css({
-                   'display': 'block',
-                   'position': 'absolute',
-                   'left': '50%',
-                   'top': '50%',
-                   'margin-left': -w,
-                   'margin-top': -h
-               }).addClass('on');
-           });
-           $('.btn2').click(function(){
-               var w = $('.layer2').innerWidth()/2;
-               var h = $('.layer2').innerHeight()/2;
-               $('.layer2').css({
-                   'display': 'block',
-                   'position': 'absolute',
-                   'left': '50%',
-                   'top': '50%',
-                   'margin-left': -w,
-                   'margin-top': -h
-               }).addClass('on');
-           });
-        })(jQuery);
-    </script>
+    <ol>
+        <li>
+            <button type="button" class="btn1">레이어1 중앙에 띄우기</button>
+            <button type="button" class="btn2">레이어2 중앙에 띄우기</button>
+            <script>    
+                $('.btn1').click(function(){
+                    var w = $('.layer1').innerWidth()/2;
+                    var h = $('.layer1').innerHeight()/2;
+                    $('.layer1').css({
+                        'display': 'block',
+                        'position': 'absolute',
+                        'left': '50%',
+                        'top': '50%',
+                        'margin-left': -w,
+                        'margin-top': -h
+                    }).addClass('on');
+                });
+                $('.btn2').click(function(){
+                    var w = $('.layer2').innerWidth()/2;
+                    var h = $('.layer2').innerHeight()/2;
+                    $('.layer2').css({
+                        'display': 'block',
+                        'position': 'absolute',
+                        'left': '50%',
+                        'top': '50%',
+                        'margin-left': -w,
+                        'margin-top': -h
+                    }).addClass('on');
+                });
+            </script>
+        </li>
+        <!--
+        <li>
+            <button type="button" class="btn3">레이어1 중앙에 띄우기</button>
+            <button type="button" class="btn4">레이어2 중앙에 띄우기</button>
+            <script>    
+                $.fn.setPosFn = function(){
+                    var obj = $(this);
+                    var w = obj.innerWidth()/2;
+                    var h = obj.innerHeight()/2;
+                    return obj.css({
+                        'display': 'block',
+                        'position': 'absolute',
+                        'left': '50%',
+                        'top': '50%',
+                        'margin-left': -w,
+                        'margin-top': -h
+                    })
+                }
+                $('.btn3').click(function(){
+                    $('.layer1').setPosFn().addClass('on');
+                });
+                $('.btn4').click(function(){
+                    $('.layer2').setPosFn().addClass('on');
+                });
+            </script>
+        </li>
+        -->
+    </ol>
 </body>
 </html>

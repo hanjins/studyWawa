@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javascript 교육 - plugin</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <h1>Images Viewer</h1>
+    <p>
+        버튼을 클릭하면 이미지 보기(레이어 팝업)를 할 수 있다.
+    </p>
+    
+    <button type="button" onclick="imgViewFn('./images/img1.jpg');">이미지 보기 1</button>
+    <button type="button" onclick="imgViewFn('./images/img2.jpg');">이미지 보기 2</button>
+    <button type="button" onclick="imgViewFn('./images/img3.jpg');">이미지 보기 3</button>
+    <style>
+        .imgView { position: absolute; }
+        .imgView::before { content: ''; display: block; position: fixed; left: 0; bottom: 0; width: 100%; height: 100%; background: rgba(0,0,0,.7); }
+        .imgView img { position: relative; border: 5px solid #fff }
+    </style>
+    <script>
+        $.fn.setPosFn = function(){
+            var obj = $(this);
+            var w = obj.innerWidth()/2;
+            var h = obj.innerHeight()/2;
+            return obj.css({
+                'display': 'block',
+                'position': 'absolute',
+                'left': '50%',
+                'top': '50%',
+                'margin-left': -w,
+                'margin-top': -h
+            })
+        }
+        function imgViewFn(url){
+            $('body').append('<div class="imgView"><img src="' + url + '"></div>');
+            setTimeout(function(){
+                $('.imgView').setPosFn();
+            },10);
+        }
+    </script>
+            
+</body>
+</html>
