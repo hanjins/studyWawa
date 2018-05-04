@@ -17,6 +17,7 @@ STEP1의 자바스크립트 코드를 객체 리터럴 방식으로 개선한다
 
 ## STEP3
 STEP2의 자바스크립트 코드 중 특정 코드를 플러그인으로 만든다.  
+> 어떤 것을 플러그인으로 만들면 좋을까?
 
 [예제 링크](https://hanjins.github.io/studyWawa/example3.html)
 
