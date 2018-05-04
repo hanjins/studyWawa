@@ -26,3 +26,7 @@ STEP2의 자바스크립트 코드 중 특정 코드를 플러그인으로 만�
 위 처럼 소스 코드를 개선하고 플러그인도 만들어 활용한다.
 
 [예제 링크](https://hanjins.github.io/studyWawa/example4.html)
+
+----
+
+참고 URL : [jQuery : 플러그인 개발](http://www.nextree.co.kr/p9989/)
