@@ -25,7 +25,8 @@ STEP2의 자바스크립트 코드 중 특정 코드를 플러그인으로 만�
 레이어 팝업 화면 가운데 띄우기 실습  
 위 처럼 소스 코드를 개선하고 플러그인도 만들어 활용한다.
 
-[예제 링크](https://hanjins.github.io/studyWawa/example4.html)
+[예제 링크1](https://hanjins.github.io/studyWawa/example4.html)  
+[예제 링크2](https://hanjins.github.io/studyWawa/example5.html)
 
 ----
 
