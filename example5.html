@@ -20,6 +20,7 @@
         .imgView { position: absolute; }
         .imgView::before { content: ''; display: block; position: fixed; left: 0; bottom: 0; width: 100%; height: 100%; background: rgba(0,0,0,.7); }
         .imgView img { position: relative; border: 5px solid #fff }
+        .imgView .btn-close { position: absolute; right: 0; top: -30px; }
     </style>
     <script>
         $.fn.setPosFn = function(){
@@ -36,7 +37,15 @@
             })
         }
         function imgViewFn(url){
-            $('body').append('<div class="imgView"><img src="' + url + '"></div>');
+            $('body').append(
+                '<div class="imgView">'+
+                '   <img src="' + url + '">'+
+                '   <button type="button" class="btn-close">닫기</button>'+
+                '</div>'
+            );
+            $('.btn-close').click(function(){
+                $(this).parent().remove();
+            });
             setTimeout(function(){
                 $('.imgView').setPosFn();
             },10);
