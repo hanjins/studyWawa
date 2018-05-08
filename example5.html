@@ -37,18 +37,21 @@
             })
         }
         function imgViewFn(url){
-            $('body').append(
-                '<div class="imgView">'+
-                '   <img src="' + url + '">'+
-                '   <button type="button" class="btn-close">닫기</button>'+
-                '</div>'
-            );
-            $('.btn-close').click(function(){
-                $(this).parent().remove();
-            });
+            var html = '<div class="imgView">'+
+                        '   <img src="' + url + '">'+
+                        '   <button type="button" class="btn-close">닫기</button>'+
+                        '</div>'
+            $('body').append(html);
+            
+            /* $('.imgView > img').on('load', function(){
+                $('.imgView').setPosFn();
+            }) */
             setTimeout(function(){
                 $('.imgView').setPosFn();
             },10);
+            $('.btn-close').click(function(){
+                $(this).parent().remove();
+            });
         }
     </script>
             
