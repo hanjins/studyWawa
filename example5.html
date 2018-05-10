@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>javascript 교육 - plugin</title>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="./js/jquery.my-1.0.js"></script>
 </head>
 <body>
     <h1>Images Viewer</h1>
@@ -23,41 +24,6 @@
         .imgView img { position: relative; border: 5px solid #e9e9e9; }
     </style>
     <script>
-        $.fn.setPosFn = function(){
-            var obj = $(this);
-            var w = obj.innerWidth()/2;
-            var h = obj.innerHeight()/2;
-            return obj.css({
-                'display': 'block',
-                'position': 'fixed',
-                'left': '50%',
-                'top': '50%',
-                'margin-left': -w,
-                'margin-top': -h
-            })
-        }
-
-        $.fn.viewImage = function(){
-            var obj = $(this);
-            obj.css({'cursor':'zoom-in'}).on('click', function(e){
-                e.preventDefault();
-                var $t = $(this);
-                var $src = $t.find('img').attr('src');
-                var $top = $t.find('img').eq(0).offset().top - $('html, body').scrollTop();
-                var $left = $t.find('img').eq(0).offset().left;
-                activeFn($src, $top, $left);
-            });
-            var activeFn = function(url, top, left) {
-                var html = '<div class="imgView" style="top:'+ top +'px; left:'+ left +'px;"><img src="' + url + '" alt=""></div>';
-                $('html, body').css({'overflow':'hidden'});
-                $('body').append(html);
-                $('.imgView').setPosFn().on('click', function(){
-                    $(this).remove();
-                    $('html, body').css({'overflow':'visible'});
-                });
-            }
-        }
-
         $('.viewImage').viewImage();
     </script>
             
